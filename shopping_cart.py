@@ -43,7 +43,20 @@ class ShoppingCart:
         return median
 
     def apply_discount(self):
-       pass
+        if not self.employee_discount:
+            return 'Sorry, there is no discount to apply to your cart :('
+
+        self.total = 0
+        for item in self.items:
+            self.total += item['price'] *item['quantity'] * self.employee_discount
+
+        return self.total
 
     def void_last_item(self):
-        pass
+        if len(self.items) == 0:
+            return 'There are no items in your cart!'
+
+        self.items.pop()
+        self.apply_discount()
+
+        return self.total
