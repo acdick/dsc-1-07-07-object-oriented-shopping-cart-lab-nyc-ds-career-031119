@@ -14,11 +14,33 @@ class ShoppingCart:
         self.total += price * quantity
         return self.total
 
+    def n_items(self):
+        n_items = 0
+        for item in self.items:
+            n_items += item['quantity']
+
+        return n_items
+
     def mean_item_price(self):
-       pass
+        return self.total / n_items()
 
     def median_item_price(self):
-        pass
+        median = 0
+        prices = []
+        n_items = n_items()
+
+        for item in self.items:
+            prices.append(item['price'])
+        prices.sort()
+
+        if n_items % 2 != 0:
+            median = self.items[int(n_items / 2)]
+        else:
+            median = self.items[int(n_items / 2)]
+            median += self.items[int(n_items / 2)+1]
+            median /= 2
+
+        return median
 
     def apply_discount(self):
        pass
