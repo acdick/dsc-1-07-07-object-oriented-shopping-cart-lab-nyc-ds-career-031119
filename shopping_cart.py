@@ -34,10 +34,10 @@ class ShoppingCart:
         prices.sort()
 
         if n_items % 2 != 0:
-            median = self.items[int(n_items / 2)]
+            median = prices[int(n_items / 2)]
         else:
-            median = self.items[int(n_items / 2)]
-            median += self.items[int(n_items / 2)+1]
+            median = prices[int(n_items / 2)]
+            median += prices[int(n_items / 2)+1]
             median /= 2
 
         return median
