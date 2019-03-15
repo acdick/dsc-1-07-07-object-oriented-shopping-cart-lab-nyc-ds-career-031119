@@ -10,7 +10,7 @@ class ShoppingCart:
         item['name'] = name
         item['price'] = price
         item['quantity'] = quantity
-        items.append(item)
+        self.items.append(item)
         self.total += price * quantity
         return self.total
 
