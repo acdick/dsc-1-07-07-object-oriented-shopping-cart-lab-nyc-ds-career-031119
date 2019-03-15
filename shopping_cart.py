@@ -48,7 +48,7 @@ class ShoppingCart:
 
         self.total = 0
         for item in self.items:
-            self.total += item['price'] *item['quantity'] * self.employee_discount
+            self.total += item['price'] * item['quantity'] * (1 - self.employee_discount)
 
         return self.total
 
