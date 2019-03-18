@@ -11,7 +11,7 @@ class ShoppingCart:
         item['price'] = price
         item['quantity'] = quantity
         self.items.append(item)
-        self.total += price * quantity
+        self.total += item['price'] * item['quantity']
         return self.total
 
     def n_items(self):
@@ -45,18 +45,13 @@ class ShoppingCart:
     def apply_discount(self):
         if not self.employee_discount:
             return 'Sorry, there is no discount to apply to your cart :('
-
-        self.total = 0
-        for item in self.items:
-            self.total += item['price'] * item['quantity'] * (1 - self.employee_discount)
-
-        return self.total
+        else:
+            return self.total * (1 - self.employee_discount / 100)
 
     def void_last_item(self):
         if len(self.items) == 0:
             return 'There are no items in your cart!'
 
-        self.items.pop()
-        self.apply_discount()
+        self.total -= self.items.pop()['price']
 
         return self.total
